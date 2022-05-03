@@ -7,12 +7,7 @@ parallel_mode 1
 number_of_elements 1                  
 elements Ni                             
 random_seed 100                         
-random_number_type 5                      
-#remove_atom_energies                     
-#atom_energy O -74.94518524              
-#atom_energy H  -0.45890771             
-#energy_threshold 100.0d0              
-#bond_threshold 0.4d0                 
+random_number_type 5                                       
 
 ########################################################################################################################
 ### NN structure of the short-range NN  
