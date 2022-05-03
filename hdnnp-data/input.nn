@@ -58,16 +58,6 @@ symfunction_short Ni 3 Ni Ni 0.071000  -1.0 2.0   9.000000     ! central_atom ty
 symfunction_short Ni 3 Ni Ni 0.071000  -1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
 symfunction_short Ni 3 Ni Ni 0.071000  -1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
 
-#symfunction_short Ni 3 Ni Ni 0.179000   1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000   1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000   1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000   1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
-
-
 ########################################################################################################################
 ### fitting (mode 2):general inputs for short range AND electrostatic part:
 ########################################################################################################################
