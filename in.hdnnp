@@ -1,0 +1,58 @@
+###############################################################################
+# VARIABLES
+###############################################################################
+clear
+# Configuration files
+variable cfgFile         string "data.2916"
+# Timesteps
+variable numSteps        equal  2000000
+variable dt              equal  0.0005
+# HDNNP
+variable nnpCutoff     equal  4.763
+variable nnpDir        string "hdnnp-data"
+###############################################################################
+# GENERAL SETUP
+###############################################################################
+units metal
+boundary p p p
+atom_style atomic
+read_data ${cfgFile}
+timestep ${dt}
+thermo 1
+###############################################################################
+# HDNNP
+###############################################################################
+pair_style nnp dir ${nnpDir} showew no showewsum 100 resetew yes maxew 100000 cflength 1.8897261328 cfenergy 0.0367493254 emap "1:Ni"
+pair_coeff * * ${nnpCutoff}   #Comment out when secondary calculating RDF
+#pair_coeff * * 10              #Comment in when secondary calculation RDF
+###############################################################################
+# ENERGY MINIMIZATION
+###############################################################################
+min_style       sd
+min_modify dmax 0.05
+minimize        1.0e-4 1.0e-6 1000 1000
+thermo          100
+thermo_style    custom step temp pe ke etotal vol press
+###############################################################################
+# INTEGRATOR
+###############################################################################
+velocity all create 1720 481516
+fix 1 all npt temp 1720 1720 $(20*dt) iso 0.0 0.0 50   #Comment out when secondary calculating RDF
+###############################################################################
+# OUTPUT
+###############################################################################
+restart 1000000 ni.restart
+dump 1 all atom 500 dump.hdnnp.Ni   #Comment out when secondary calculating RDF
+###############################################################################
+# SIMULATION
+###############################################################################
+run ${numSteps}   #Comment out when secondary calculating RDF
+###############################################################################  
+# COMPUTE RDF
+###############################################################################
+#compute myRDF all rdf 200 1 1                                     #Comment in when secondary calculating RDF
+#fix 2 all ave/time 500 1000 500000 c_myRDF[*] file tmp.rdf mode vector  #Comment in when secondary calculating RDF
+#rerun dump.hdnnp.Ni dump x y z                                    #Comment in when secondary calculating RDF
+###############################################################################
+
+

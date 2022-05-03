@@ -1,0 +1,114 @@
+########################################################################################################################
+### general keywords
+########################################################################################################################
+nn_type_short 1                                 
+runner_mode 2
+parallel_mode 1                         
+number_of_elements 1                  
+elements Ni                             
+random_seed 100                         
+random_number_type 5                      
+#remove_atom_energies                     
+#atom_energy O -74.94518524              
+#atom_energy H  -0.45890771             
+#energy_threshold 100.0d0              
+#bond_threshold 0.4d0                 
+
+########################################################################################################################
+### NN structure of the short-range NN  
+########################################################################################################################
+use_short_nn                               
+global_hidden_layers_short 2              
+global_nodes_short 25 25                 
+global_activation_short t t l            
+
+########################################################################################################################
+### symmetry function generation ( mode 1): 
+########################################################################################################################
+test_fraction 0.1 
+
+########################################################################################################################
+### symmetry function definitions (all modes): 
+########################################################################################################################
+cutoff_type 1
+
+# radial Ni Ni
+
+symfunction_short Ni  2 Ni     0.036000      0.000000     9.000000   ! central_atom type neighbor_atom eta rshift funccutoff
+symfunction_short Ni  2 Ni     0.071000      0.000000     9.000000   ! central_atom type neighbor_atom eta rshift funccutoff
+symfunction_short Ni  2 Ni     0.179000      0.000000     9.000000   ! central_atom type neighbor_atom eta rshift funccutoff
+
+# angular
+
+symfunction_short Ni 3 Ni Ni 0.036000   1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000   1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000   1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000   1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000  -1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000  -1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000  -1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.036000  -1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+
+symfunction_short Ni 3 Ni Ni 0.071000   1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000   1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000   1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000   1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000  -1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000  -1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000  -1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+symfunction_short Ni 3 Ni Ni 0.071000  -1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+
+#symfunction_short Ni 3 Ni Ni 0.179000   1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000   1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000   1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000   1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 1.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 2.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 4.0   9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+#symfunction_short Ni 3 Ni Ni 0.179000  -1.0 16.0  9.000000     ! central_atom type neighbor_atom1 neighbor_atom2 eta lambda zeta funccutoff
+
+
+########################################################################################################################
+### fitting (mode 2):general inputs for short range AND electrostatic part:
+########################################################################################################################
+epochs 15                            
+points_in_memory 500                
+mix_all_points                       
+scale_symmetry_functions             
+center_symmetry_functions             
+fitting_unit  eV                      
+
+########################################################################################################################
+### fitting options ( mode 2): short range part only:
+########################################################################################################################
+optmode_short_energy 1      !recommeded           
+optmode_short_force 1       !recommeded            
+short_energy_error_threshold 0.8	 
+short_force_error_threshold 0.8		 
+kalman_lambda_short 0.98000 ! do not change               
+kalman_nue_short 0.99870    ! do not change               
+#use_old_weights_short               
+force_update_scaling -1.0   !relative impact of energies and force components      
+short_energy_group 1        !recommeded 
+short_energy_fraction 1.0           
+short_force_group 1         !recommeded         
+short_force_fraction 0.01            
+use_short_forces                    
+weights_min -1.0                 
+weights_max 1.0                  
+precondition_weights            
+repeated_energy_update          
+nguyen_widrow_weights_short      
+
+########################################################################################################################
+### output options for mode 2 (fitting):  
+########################################################################################################################
+write_trainpoints              
+write_trainforces      
+
+########################################################################################################################
+### output options for mode 3 (prediction):  
+########################################################################################################################
+calculate_forces     
+#calculate_stress       
+
